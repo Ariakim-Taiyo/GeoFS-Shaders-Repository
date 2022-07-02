@@ -77,6 +77,22 @@ vec3 recNormals(vec3 pos) {
   vec3 normal2 = normalize(cross(dFdx(P2), dFdy(P2)));
   vec3 normal3 = normalize(cross(dFdx(P3), dFdy(P3)));
   vec3 normal4 = normalize(cross(dFdx(P4), dFdy(P4)));
+  if (normal1 == vec3(0.0)) { // fix edge blending
+    normal1 = normal;
+  }
+
+  if (normal2 == vec3(0.0)) {
+    normal2 = normal;
+  }
+
+  if (normal3 == vec3(0.0)) {
+    normal3 = normal;
+  }
+
+  if (normal4 == vec3(0.0)) {
+    normal4 = normal;
+  }
+
   if(smoothNormals == true) {
   return (normal + normal1 + normal2 + normal3 + normal4) / 5.0;
   } else {
@@ -108,7 +124,7 @@ void main(void)
     vec3 normalInCamera = getNormalXEdge(posInCamera.xyz, depthU, depthD, depthL, depthR, pixelSize);
     //normalInCamera = 2.0 * normalInCamera - 1.0;
 float maxDistance = 8.0;
-float resolution  = 0.1;
+float resolution  = 0.5;
 int   steps       = 5;
 float thickness   = 0.1;
 
@@ -119,9 +135,11 @@ vec4 positionFrom     = initialPos;
 vec3 unitPositionFrom = normalize(positionFrom.xyz);
 vec3 normal           = normalize(normals);
 vec3 pivot            = normalize(reflect(unitPositionFrom, normal));
+
+
 vec3 diffVec = clamp((unitPositionFrom.xyz - abs(normal)) * 10.0 * (10.0 * depth1), 0.0, 10.0);
 float dotP = clamp(-dot(normal, unitPositionFrom) * 10.0 * (4.0 * depth1), 0.0, 10.0);
-float diffTest = clamp(mix((diffVec.y), dotP, 0.1) / 2.25 * depth1, 0.0, 1.0) ;
+float diffTest = clamp(1.0 - dot(pivot, unitPositionFrom), 0.0, 1.0);
 vec4 startView = vec4(positionFrom.xyz + (pivot * 0.0), 1.0);
 vec4 endView   = vec4(positionFrom.xyz + (pivot * maxDistance), 1.0);
 float distTo = length(startView - endView);
@@ -172,7 +190,7 @@ float currentY = (startFrag.y) * (1.0 - search1) + (endFrag.y) * search1;
     if (depth1 > 0.99) {
       break;
     }
-    if (diffTest > 0.4 ) {
+    if (diffTest > 0.9 ) {
       break;
 
 }
