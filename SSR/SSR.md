@@ -1,4 +1,4 @@
-# Screen-Space Reflection Shader 1.1
+# Screen-Space Reflection Shader 1.1b
 
 I highly recommend not using this on the ground; The reflections are in sreen space<br>
 and can't reflect the underside of an aircraft when it's not visible. You'll get strage results.<br>
@@ -45,5 +45,8 @@ at intersections with other surfaces, for example, the ground.<br>
 
 v.1.0: Initial Release.<br>
 
-**v.1.1:** Fixed depth calculations, no more shiny terrain at distances. Fixed sky flashes. Reflections no longer appear in cockpit.<br>
-Added normal smoothing calculations. Added close-up relflections. Adjusted view angle cutoff.
+v.1.1a: Fixed depth calculations, no more shiny terrain at distances. Fixed sky flashes. Reflections no longer appear in cockpit.<br>
+Added normal smoothing calculations. Added close-up relflections. Adjusted view angle cutoff.<br>
+
+**v.1.1b:** Fixed smooth normals edge artifacts.<br>
+
