@@ -1,23 +1,14 @@
 # Screen-Space Reflection Shader 1.1b
 
-I highly recommend not using this on the ground; The reflections are in sreen space<br>
-and can't reflect the underside of an aircraft when it's not visible. You'll get strage results.<br>
-
-Just copy into the console.
-
-**Known Bugs/Limitations:**<br>
-Does not work with advanced atmosphere shaders,<br>
-Terrain Distortion under aircraft,<br>
-Refelctions not projected properly onto ground<br>
-
+Just copy into the console and enable it in the preferences panel.
 
 
 **Settings:**<br>
-There are two new settings in the graphics panel, one to toggle the shader, and one to toggle the smooth normal calculations.<br>
+There are three new settings in the graphics panel, one to toggle the shader, one to toggle the smooth normal calculations, and one to change the strength of the reflections.<br>
 The shader is off by default, you will need to turn it on in the panel.<br>
 Smooth normals are a little complicated, here is the gist of it:<br>
 Smooth normals make the reflections more consistent with the surface of the aircraft, however, they can cause artifacts<br>
-at intersections with other surfaces, for example, the ground.<br>
+at intersections with other surfaces, for example, the ground. They also degrade accuracy at far viewing points.<br>
 
 *Smooth Normals Off:*<br>
 <img width="918" alt="Screen Shot 2022-07-01 at 2 55 39 PM" src="https://user-images.githubusercontent.com/79466778/176960809-e052aac7-3d47-4170-913d-8cf21363c006.png">
@@ -46,7 +37,11 @@ at intersections with other surfaces, for example, the ground.<br>
 v.1.0: Initial Release.<br>
 
 v.1.1a: Fixed depth calculations, no more shiny terrain at distances. Fixed sky flashes. Reflections no longer appear in cockpit.<br>
-Added normal smoothing calculations. Added close-up relflections. Adjusted view angle cutoff.<br>
+Added normal smoothing calculations. Added close-up reflections. Adjusted view angle cutoff.<br>
 
-**v.1.1b:** Fixed smooth normals edge artifacts.<br>
+v.1.1b: Fixed smooth normals edge artifacts.<br>
+
+v.1.3: Full 3.3 Compatability.<br>
+
+**v.1.4:** Per-Object shading is now in place to fix the issues with shiny ground. Smooth Normals have been partially rewritten to provide better results with less artifacts. A new option has been added to the menu to provide control over the strength of the effect. The code is now minified.
 
