@@ -10,5 +10,5 @@ So far we have 1 shader ready for public use. <br>
 `Dynamic Point Lighting`<br>
 `Light Shafts aka godrays`<br>
 
-**Default Cesium Shaders**(aka i'm not making them):<br>
+**Default Cesium Shaders** (In other words, i'm not making them):<br>
 SSAO, Bloom, DoF, Lens Flares, assorted AA filters.
